@@ -1,0 +1,38 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="Alpha Candy Non-Commercial License"
+
+[[mods]]
+modId="alphacandy"
+version="${version}"
+displayName="Alpha Candy"
+authors="Alpha Candy Team"
+description='''A small Cobblemon addon that lets players attempt to turn their own Pokémon into Alpha Pokémon.'''
+
+[[dependencies.alphacandy]]
+modId="neoforge"
+type="required"
+versionRange="[21.1,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.alphacandy]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.alphacandy]]
+modId="architectury"
+type="required"
+versionRange="[13.0,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.alphacandy]]
+modId="cobblemon"
+type="required"
+versionRange="[1.8.1,1.9.0)"
+ordering="AFTER"
+side="BOTH"

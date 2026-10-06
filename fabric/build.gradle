@@ -1,0 +1,70 @@
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+
+configurations {
+    common
+    shadowCommon
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentFabric.extendsFrom common
+}
+loom {
+    runs {
+        client {
+            client()
+            setConfigName("Fabric Client")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+        server {
+            server()
+            setConfigName("Fabric Server")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+    }
+}
+
+dependencies {
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+    modImplementation "dev.architectury:architectury-fabric:${architectury_api_version}"
+    modImplementation "curse.maven:cobblemon-${cobblemon_curse_id}:${cobblemon_fabric_file}"
+    common(project(path: ":common", configuration: "namedElements")) { transitive = false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive = false }
+}
+
+tasks.named("processResources") {
+    inputs.property("version", project.version)
+    filesMatching("fabric.mod.json") {
+        expand(
+            version: project.version,
+            minecraft_version: minecraft_version,
+            fabric_loader_version: fabric_loader_version,
+            fabric_api_version: fabric_api_version,
+            architectury_api_version: architectury_api_version
+        )
+    }
+}
+
+jar {
+    from(rootProject.file('LICENSE'))
+    archiveBaseName = 'alpha-candy-fabric'
+    dependsOn(project(':common').tasks.named('transformProductionFabric'))
+    from {
+        configurations.shadowCommon.collect { zipTree(it) }
+    }
+}
+
+remapJar {
+    injectAccessWidener = true
+    archiveBaseName = 'alpha-candy-fabric'
+    archiveClassifier = null
+}
+
+
+
+
+

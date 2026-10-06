@@ -1,0 +1,19 @@
+ALPHA CANDY - BUILD WINDOWS
+
+Requirements:
+- JDK 21
+- Internet access for Gradle dependencies
+
+If you have Gradle installed:
+    gradle wrapper --gradle-version 8.14.4
+    .\gradlew.bat build
+
+If you already have a Gradle wrapper generated, simply:
+    .\gradlew.bat build
+
+Runtime jars:
+    fabric\build\libs\alpha-candy-fabric-1.0.0.jar
+    neoforge\build\libs\alpha-candy-neoforge-1.0.0.jar
+
+IMPORTANT:
+The two jars are alternatives. Install only the one matching your loader.

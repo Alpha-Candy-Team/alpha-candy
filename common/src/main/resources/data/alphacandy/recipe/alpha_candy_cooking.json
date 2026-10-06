@@ -1,0 +1,22 @@
+{
+  "type": "cobblemon:cooking_pot_shapeless",
+  "category": "medicines",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "cobblemon:exp_candy_s"
+    },
+    {
+      "item": "cobblemon:tamato_berry"
+    }
+  ],
+  "result": {
+    "id": "alphacandy:alpha_candy"
+  },
+  "seasoningTag": "cobblemon:recipe_filters/alpha_seasoning",
+  "seasoningProcessors": [
+    "alphacandy:essence_chance"
+  ]
+}

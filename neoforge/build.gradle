@@ -1,0 +1,75 @@
+architectury {
+    platformSetupLoomIde()
+    neoForge()
+}
+
+configurations {
+    common
+    shadowCommon
+    neoForge
+
+    compileClasspath.extendsFrom common, neoForge
+    runtimeClasspath.extendsFrom common
+    developmentNeoForge.extendsFrom common
+}
+
+loom {
+    runs {
+        client {
+            client()
+            setConfigName("NeoForge Client")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+
+        server {
+            server()
+            setConfigName("NeoForge Server")
+            ideConfigGenerated(true)
+            runDir("run")
+        }
+    }
+}
+
+dependencies {
+    add("neoForge", "net.neoforged:neoforge:" + neoforge_version)
+
+    modImplementation "dev.architectury:architectury-neoforge:${architectury_api_version}"
+    modImplementation "curse.maven:cobblemon-${cobblemon_curse_id}:${cobblemon_neoforge_file}"
+
+    common(project(path: ":common", configuration: "namedElements")) {
+        transitive = false
+    }
+
+    shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) {
+        transitive = false
+    }
+}
+
+tasks.named("processResources") {
+    inputs.property("version", project.version)
+
+    filesMatching("META-INF/neoforge.mods.toml") {
+        expand(
+            version: project.version,
+            minecraft_version_range: minecraft_version_range,
+            neoforge_version: neoforge_version
+        )
+    }
+}
+
+jar {
+      from(rootProject.file('LICENSE'))
+      archiveBaseName = "${archives_base_name}-neoforge"
+
+    dependsOn(project(":common").tasks.named("transformProductionNeoForge"))
+
+    from {
+        configurations.shadowCommon.collect { zipTree(it) }
+    }
+}
+
+remapJar {
+      archiveBaseName = "${archives_base_name}-neoforge"
+    archiveClassifier = null
+}

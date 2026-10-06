@@ -1,0 +1,10 @@
+{
+  "defaultCandyAlphaChance": 0.01,
+  "rewardEssenceOnPurifyingCandy": true,
+  "purifyingCandyEssenceMin": 1,
+  "purifyingCandyEssenceMax": 1,
+  "alphaCandyHealAmount": 0,
+  "speciesBlacklist": [],
+  "essenceBoost": 0.32,
+  "maxEssencePerCandy": 3
+}

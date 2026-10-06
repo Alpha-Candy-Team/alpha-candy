@@ -1,0 +1,34 @@
+﻿{
+  "type": "cobblemon:cooking_pot",
+  "category": "complex_dishes",
+  "key": {
+    "M": {
+      "item": "cobblemon:moomoo_milk"
+    },
+    "A": {
+      "item": "cobblemon:aspear_berry"
+    },
+    "P": {
+      "item": "cobblemon:pecha_berry"
+    },
+    "R": {
+      "item": "cobblemon:rawst_berry"
+    },
+    "L": {
+      "item": "cobblemon:lum_berry"
+    },
+    "C": {
+      "item": "alphacandy:alpha_candy"
+    }
+  },
+  "pattern": [
+    "MAM",
+    "PCR",
+    "MLM"
+  ],
+  "result": {
+    "id": "alphacandy:purifying_candy"
+  },
+  "seasoningTag": "cobblemon:empty",
+  "seasoningProcessors": []
+}
