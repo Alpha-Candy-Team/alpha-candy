@@ -1,111 +1,125 @@
-Alpha Candy
+# Alpha Candy
 
-Small Cobblemon addon for Minecraft 1.21.1 that adds a chance-based Alpha Candy system using Cobblemon's Cooking Pot seasoning system.
+Alpha Candy is a Cobblemon addon for **Minecraft 1.21.1**. It adds craftable candies that let you turn Pokémon into Alpha Pokémon, along with purification and Advanced Alpha features.
 
-Development target
-Minecraft 1.21.1
-Java 21
-Cobblemon 1.8.1
-Fabric + NeoForge
-Architectury
-Features
-Alpha Candy
+## Compatibility
 
-Alpha Candy can be crafted in the Cobblemon Cooking Pot.
+- **Minecraft:** 1.21.1
+- **Cobblemon:** 1.8.1 or newer, within the supported Minecraft version
+- **Loaders:** Fabric and NeoForge
+- **Architecture:** Architectury
+- **Java:** 21 or newer
 
-The candy has an internal Essence level that is determined when it is crafted:
+Iota compatibility is supported when the Iotas mod is installed. Iotas is optional and is not required for the standard Alpha Candy features.
 
-Alpha Essence	Alpha chance
-0	1%
-1	33%
-2	65%
-3	97%
+## Features
 
-The default values can be changed through the mod configuration.
+### Alpha Candy
 
-The Essence level is stored directly in the Alpha Candy, so the candy keeps its configured chance after being crafted, moved, stored, or reloaded.
+Alpha Candy lets you attempt to turn a Pokémon into an Alpha Pokémon. Its success chance is determined by the Essence level stored in the candy when it is crafted.
 
-Alpha Essence
+| Alpha Essence level | Alpha conversion chance |
+| ---: | ---: |
+| 0 | 1% |
+| 1 | 33% |
+| 2 | 65% |
+| 3 | 97% |
 
-Alpha Essence is registered as a Cobblemon Cooking Pot seasoning.
+These values are configurable. The chance is stored in the crafted candy, so it remains the same when the item is moved, stored, or reloaded.
 
-Each occupied seasoning slot containing Alpha Essence adds 1 Essence level.
-The amount of items in a slot does not affect the level.
-A stack of 64 Alpha Essence in one slot counts as 1 Essence.
-A maximum of 3 Essence levels can be applied to a candy.
-Each occupied Essence slot consumes one Alpha Essence when the recipe is completed.
+### Alpha Essence
 
-Alpha Essence is therefore used during crafting rather than being consumed when the Alpha Candy is used.
+Alpha Essence is used as seasoning in Cobblemon's Cooking Pot.
 
-Purifying Candy
+- Each occupied Alpha Essence seasoning slot adds **1 Essence level**.
+- The number of items in a slot does not matter: a stack of 64 counts as one occupied slot.
+- Up to **3 Essence levels** can be applied.
+- Each occupied slot consumes one Alpha Essence when the recipe completes.
+- Essence is consumed during crafting, not when the candy is used.
 
-Purifying Candy removes the Alpha status from a Pokémon and restores its friendship.
+### Advanced Alpha Candy
 
-In Survival mode, it can also reward Alpha Essence according to the configured settings.
+Advanced Alpha Candy guarantees the Alpha conversion rather than using the regular candy's chance.
 
-Creative mode does not provide the Survival-mode Essence reward.
+When used, it also:
+- Raises the Pokémon's level by **1**.
+- Sets the Pokémon's friendship to its maximum.
+- Applies the **Advanced Alpha** mark.
 
-Recipes
-Alpha Candy
+### Purifying Candy
 
-Alpha Candy is prepared in the Cobblemon Cooking Pot using:
+Purifying Candy removes the Alpha status from a Pokémon and restores its friendship. It can also remove the Advanced Alpha mark.
 
-Sugar
-EXP Candy S
-Tamato Berry
-Optional Alpha Essence seasoning
+- In Survival mode, using it can reward Alpha Essence according to the configuration.
+- Creative mode does not provide the Survival-mode Essence reward.
+- Essence rewards and healing behaviour can be configured.
 
-The number of Alpha Essence seasoning slots determines the Essence level stored in the resulting candy.
+### Iota compatibility
 
-Purifying Candy
+When the Iotas mod is installed, Alpha Candy includes compatibility for Iota-related features and its Advanced Alpha Candy variant. Iotas is optional.
 
-Purifying Candy is prepared in the Cobblemon Cooking Pot using:
+## Recipes
 
-Moomoo Milk
-Aspear Berry
-Pecha Berry
-Rawst Berry
-Lum Berry
-Alpha Candy
-Configuration
+Recipes are prepared in Cobblemon's Cooking Pot.
 
-The mod includes configurable values for the Alpha Candy system, including:
+### Alpha Candy
 
-Base Alpha chance
-Chance increase per Alpha Essence
-Maximum Essence level
-Purifying Candy Essence rewards
-Purifying Candy healing behaviour
+Ingredients:
+- Sugar
+- EXP Candy S
+- Tamato Berry
+- Optional Alpha Essence seasoning (up to 3 occupied slots)
 
-The default Alpha chance configuration is:
+The number of occupied Alpha Essence slots determines the Essence level stored in the resulting candy.
 
-Base chance: 1%
-Essence boost: +32% per Essence
-Maximum Essence level: 3
+### Purifying Candy
 
-This results in:
+Ingredients:
+- Moomoo Milk
+- Aspear Berry
+- Pecha Berry
+- Rawst Berry
+- Lum Berry
+- Alpha Candy
 
-0 Essence → 1%
-1 Essence → 33%
-2 Essence → 65%
-3 Essence → 97%
-Compatibility
+## Configuration
 
-This project is specifically targeted at:
+The mod supports configuration for values including:
 
-Minecraft 1.21.1
-Cobblemon 1.8.1
+- Base Alpha conversion chance
+- Chance increase per Alpha Essence
+- Maximum Essence level
+- Purifying Candy Essence rewards
+- Purifying Candy healing behaviour
 
-Both Fabric and NeoForge are supported.
+Default Alpha Candy chances:
 
-The Cobblemon integration is kept in a small, dedicated area where possible so future Cobblemon versions can be supported through separate compatibility changes rather than assuming that one version will work with every Cobblemon API revision.
+| Essence level | Chance |
+| ---: | ---: |
+| 0 | 1% |
+| 1 | 33% |
+| 2 | 65% |
+| 3 | 97% |
 
-Version
+## Building from source
 
-Current version:
+Use Java 21 and the included Gradle wrapper.
 
-Alpha Candy 1.0.0
+From the repository root:
 
-Target:
+```powershell
+.\gradlew.bat clean build
+```
 
-Minecraft 1.21.1 / Cobblemon 1.8.1
+Built mod jars are produced in the platform modules' `build/libs` directories:
+
+- `fabric/build/libs/`
+- `neoforge/build/libs/`
+
+## License
+
+Alpha Candy is distributed under the **Alpha Candy Non-Commercial License**. See the repository's license file for the full terms.
+
+## Version
+
+**Alpha Candy 1.1.0**
