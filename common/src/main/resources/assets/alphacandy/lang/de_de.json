@@ -1,6 +1,14 @@
 {
-    "item.alphacandy.alpha_candy":  "Alpha-Bonbon",
-    "item.alphacandy.alpha_essence":  "Alpha-Essenz",
-    "item.alphacandy.purifying_candy":  "Reinigungsbonbon",
-  "itemGroup.alphacandy.alpha_candy": "Alpha-Bonbon"
+  "item.alphacandy.alpha_candy": "Alpha-Bonbon",
+  "item.alphacandy.alpha_essence": "Alpha-Essenz",
+  "item.alphacandy.purifying_candy": "Reinigungsbonbon",
+  "itemGroup.alphacandy.alpha_candy": "Alpha-Bonbons",
+  "item.alphacandy.iota_candy": "Iota-Bonbon",
+  "item.alphacandy.iota_essence": "Iota-Essenz",
+  "item.alphacandy.iota_purifying_candy": "Iota-Reinigungsbonbon",
+  "item.alphacandy.iota_advanced_candy": "Fortgeschrittenes Iota-Bonbon",
+  "item.alphacandy.alpha_advanced_candy": "Fortgeschrittenes Alpha-Bonbon",
+  "alphacandy.mark.advanced_alpha": "Fortgeschrittenes Alpha",
+  "alphacandy.mark.advanced_alpha.title": "%1$s, das fortgeschrittene Alpha",
+  "alphacandy.mark.advanced_alpha.desc": "Ein Pokémon, das mit einem fortgeschrittenen Alpha-Bonbon verwandelt wurde"
 }

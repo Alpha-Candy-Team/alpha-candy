@@ -1,6 +1,14 @@
 {
-    "item.alphacandy.alpha_candy":  "Caramelo Alfa",
-    "item.alphacandy.alpha_essence":  "Esencia Alfa",
-    "item.alphacandy.purifying_candy":  "Caramelo Purificador",
-  "itemGroup.alphacandy.alpha_candy": "Caramelos Alfa"
+  "item.alphacandy.alpha_candy": "Caramelo Alfa",
+  "item.alphacandy.alpha_essence": "Esencia Alfa",
+  "item.alphacandy.purifying_candy": "Caramelo Purificador",
+  "itemGroup.alphacandy.alpha_candy": "Caramelos Alfa",
+  "item.alphacandy.iota_candy": "Caramelo Iota",
+  "item.alphacandy.iota_essence": "Esencia Iota",
+  "item.alphacandy.iota_purifying_candy": "Caramelo Purificador Iota",
+  "item.alphacandy.iota_advanced_candy": "Caramelo Iota Avanzado",
+  "item.alphacandy.alpha_advanced_candy": "Caramelo Alfa Avanzado",
+  "alphacandy.mark.advanced_alpha": "Alfa avanzado",
+  "alphacandy.mark.advanced_alpha.title": "%1$s el alfa avanzado",
+  "alphacandy.mark.advanced_alpha.desc": "Un Pokémon transformado mediante un Caramelo Alfa Avanzado"
 }

@@ -33,6 +33,9 @@ side="BOTH"
 [[dependencies.alphacandy]]
 modId="cobblemon"
 type="required"
-versionRange="[1.8.1,1.9.0)"
+versionRange="[1.8.1,)"
 ordering="AFTER"
 side="BOTH"
+
+[[mixins]]
+config="alphacandy.mixins.json"

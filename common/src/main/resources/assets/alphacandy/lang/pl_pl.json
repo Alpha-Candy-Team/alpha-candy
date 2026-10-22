@@ -1,6 +1,14 @@
 {
-    "item.alphacandy.alpha_candy":  "Cukierek Alfa",
-    "item.alphacandy.alpha_essence":  "Esencja Alfa",
-    "item.alphacandy.purifying_candy":  "OczyszczajÄ…cy cukierek",
-  "itemGroup.alphacandy.alpha_candy": "Cukierek Alfa"
+  "item.alphacandy.alpha_candy": "Cukierek Alfa",
+  "item.alphacandy.alpha_essence": "Esencja Alfa",
+  "item.alphacandy.purifying_candy": "Cukierek oczyszczający",
+  "itemGroup.alphacandy.alpha_candy": "Cukierki Alfa",
+  "item.alphacandy.iota_candy": "Cukierek Iota",
+  "item.alphacandy.iota_essence": "Esencja Iota",
+  "item.alphacandy.iota_purifying_candy": "Cukierek oczyszczający Jota",
+  "item.alphacandy.iota_advanced_candy": "Zaawansowany cukierek Iota",
+  "item.alphacandy.alpha_advanced_candy": "Zaawansowany cukierek Alfa",
+  "alphacandy.mark.advanced_alpha": "Zaawansowana Alfa",
+  "alphacandy.mark.advanced_alpha.title": "%1$s — Ulepszona Alfa",
+  "alphacandy.mark.advanced_alpha.desc": "Pokémon przemieniony za pomocą ulepszonego cukierka Alfa"
 }

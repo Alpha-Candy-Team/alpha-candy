@@ -1,22 +1,24 @@
 {
-  "schemaVersion": 1,
-  "id": "alphacandy",
-  "version": "${version}",
-  "name": "Alpha Candy",
-  "description": "A small Cobblemon addon that lets players attempt to turn their own Pokémon into Alpha Pokémon.",
-  "authors": ["Alpha Candy Team"],
-  "license": "Alpha Candy Non-Commercial License",
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-      "com.alphacandy.fabric.AlphaCandyFabric"
-    ]
-  },
-  "depends": {
-    "fabricloader": ">=${fabric_loader_version}",
-    "minecraft": "~${minecraft_version}",
-    "fabric-api": ">=${fabric_api_version}",
-    "architectury": ">=${architectury_api_version}",
-    "cobblemon": ">=1.8.1"
-  }
+    "schemaVersion":  1,
+    "id":  "alphacandy",
+    "version":  "${version}",
+    "name":  "Alpha Candy",
+    "description":  "A small Cobblemon addon that lets players attempt to turn their own Pokémon into Alpha Pokémon.",
+    "authors":  [
+                    "Alpha Candy Team"
+                ],
+    "license":  "Alpha Candy Non-Commercial License",
+    "environment":  "*",
+    "entrypoints":  {
+                        "main":  [
+                                     "com.alphacandy.fabric.AlphaCandyFabric"
+                                 ]
+                    },
+    "depends":  {
+                    "fabricloader":  "\u003e=${fabric_loader_version}",
+                    "minecraft":  "~${minecraft_version}",
+                    "fabric-api":  "\u003e=${fabric_api_version}",
+                    "architectury":  "\u003e=${architectury_api_version}",
+                    "cobblemon":  "\u003e=1.8.1"
+                }
 }

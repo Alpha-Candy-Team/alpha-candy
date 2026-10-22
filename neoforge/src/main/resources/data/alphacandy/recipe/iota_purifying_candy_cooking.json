@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "cobblemon_iotas"
+    }
+  ],
+  "type": "cobblemon:cooking_pot_shapeless",
+  "category": "medicines",
+  "ingredients": [
+    {
+      "item": "cobblemon:moomoo_milk"
+    },
+    {
+      "item": "alphacandy:iota_candy"
+    },
+    {
+      "item": "cobblemon:lum_berry"
+    }
+  ],
+  "result": {
+    "id": "alphacandy:iota_purifying_candy"
+  },
+  "seasoningTag": "cobblemon:empty",
+  "seasoningProcessors": []
+}

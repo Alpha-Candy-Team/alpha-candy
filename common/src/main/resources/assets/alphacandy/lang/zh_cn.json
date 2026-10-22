@@ -1,6 +1,14 @@
 {
-    "item.alphacandy.alpha_candy":  "é˜¿å°”æ³•ç³– é˜¿å°”æ³•ç²¾åŽ å‡€åŒ–ç³–æžœ",
-    "item.alphacandy.alpha_essence":  null,
-    "item.alphacandy.purifying_candy":  null,
-  "itemGroup.alphacandy.alpha_candy": "Alpha Candy"
+  "item.alphacandy.alpha_candy": "\u963f\u5c14\u6cd5\u7cd6\u679c",
+  "item.alphacandy.alpha_essence": "\u963f\u5c14\u6cd5\u7cbe\u534e",
+  "item.alphacandy.purifying_candy": "\u51c0\u5316\u7cd6\u679c",
+  "itemGroup.alphacandy.alpha_candy": "\u963f\u5c14\u6cd5\u7cd6\u679c",
+  "item.alphacandy.iota_candy": "\u7ea6\u5854\u7cd6\u679c",
+  "item.alphacandy.iota_essence": "\u7ea6\u5854\u7cbe\u534e",
+  "item.alphacandy.iota_purifying_candy": "\u7ea6\u5854\u51c0\u5316\u7cd6\u679c",
+  "item.alphacandy.iota_advanced_candy": "\u9ad8\u7ea7\u7ea6\u5854\u7cd6\u679c",
+  "item.alphacandy.alpha_advanced_candy": "\u9ad8\u7ea7\u963f\u5c14\u6cd5\u7cd6\u679c",
+  "alphacandy.mark.advanced_alpha": "\u9ad8\u7ea7\u963f\u5c14\u6cd5",
+  "alphacandy.mark.advanced_alpha.title": "%1$s\uff0c\u9ad8\u7ea7\u963f\u5c14\u6cd5",
+  "alphacandy.mark.advanced_alpha.desc": "\u4f7f\u7528\u9ad8\u7ea7\u963f\u5c14\u6cd5\u7cd6\u679c\u8f6c\u5316\u7684\u5b9d\u53ef\u68a6"
 }

@@ -1,6 +1,14 @@
 {
-    "item.alphacandy.alpha_candy":  "Alfa Åžekeri",
-    "item.alphacandy.alpha_essence":  "Alfa Ã–zÃ¼",
-    "item.alphacandy.purifying_candy":  "ArÄ±ndÄ±rÄ±cÄ± Åžeker",
-  "itemGroup.alphacandy.alpha_candy": "Alfa Sekeri"
+  "item.alphacandy.alpha_candy": "Alfa Şekeri",
+  "item.alphacandy.alpha_essence": "Alfa Özü",
+  "item.alphacandy.purifying_candy": "Arındırıcı Şeker",
+  "itemGroup.alphacandy.alpha_candy": "Alfa Şekerleri",
+  "item.alphacandy.iota_candy": "İota Şekeri",
+  "item.alphacandy.iota_essence": "İota Özü",
+  "item.alphacandy.iota_purifying_candy": "İota Arındırıcı Şekeri",
+  "item.alphacandy.iota_advanced_candy": "Gelişmiş İota Şekeri",
+  "item.alphacandy.alpha_advanced_candy": "Gelişmiş Alfa Şekeri",
+  "alphacandy.mark.advanced_alpha": "Gelişmiş Alfa",
+  "alphacandy.mark.advanced_alpha.title": "%1$s — Gelişmiş Alfa",
+  "alphacandy.mark.advanced_alpha.desc": "Gelişmiş Alfa Şekeri kullanılarak dönüştürülmüş Pokémon"
 }

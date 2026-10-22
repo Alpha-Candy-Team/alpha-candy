@@ -1,6 +1,14 @@
 {
-    "item.alphacandy.alpha_candy":  "Bonbon Alpha",
-    "item.alphacandy.alpha_essence":  "Essence Alpha",
-    "item.alphacandy.purifying_candy":  "Bonbon Purificateur",
-  "itemGroup.alphacandy.alpha_candy": "Bonbon Alpha"
+  "item.alphacandy.alpha_candy": "Bonbon Alpha",
+  "item.alphacandy.alpha_essence": "Essence Alpha",
+  "item.alphacandy.purifying_candy": "Bonbon purificateur",
+  "itemGroup.alphacandy.alpha_candy": "Bonbons Alpha",
+  "item.alphacandy.iota_candy": "Bonbon Iota",
+  "item.alphacandy.iota_essence": "Essence Iota",
+  "item.alphacandy.iota_purifying_candy": "Bonbon purificateur Iota",
+  "item.alphacandy.iota_advanced_candy": "Bonbon Iota avancé",
+  "item.alphacandy.alpha_advanced_candy": "Bonbon Alpha avancé",
+  "alphacandy.mark.advanced_alpha": "Alpha avancé",
+  "alphacandy.mark.advanced_alpha.title": "%1$s, l'Alpha avancé",
+  "alphacandy.mark.advanced_alpha.desc": "Un Pokémon transformé à l'aide d'un bonbon Alpha avancé"
 }

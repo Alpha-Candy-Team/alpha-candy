@@ -1,0 +1,30 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:any_mods_loaded",
+      "values": [
+        "cobblemon-iotas"
+      ]
+    }
+  ],
+  "type": "cobblemon:cooking_pot_shapeless",
+  "category": "medicines",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "cobblemon:exp_candy_xs"
+    },
+    {
+      "item": "cobblemon:pomeg_berry"
+    }
+  ],
+  "result": {
+    "id": "alphacandy:iota_candy"
+  },
+  "seasoningTag": "cobblemon:recipe_filters/iota_seasoning",
+  "seasoningProcessors": [
+    "alphacandy:iota_essence_chance"
+  ]
+}

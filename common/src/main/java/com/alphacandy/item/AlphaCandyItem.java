@@ -45,8 +45,7 @@ public final class AlphaCandyItem extends Item {
 
         int essenceLevel = getEssenceLevel(stack);
 
-        double chance = Math.min(1.0,
-                ModConfig.defaultCandyAlphaChance + essenceLevel * ModConfig.essenceBoost);
+        double chance = net.minecraft.core.registries.BuiltInRegistries.ITEM.getKey(stack.getItem()).toString().equals("alphacandy:alpha_advanced_candy") ? 1.0 : Math.min(1.0, ModConfig.defaultCandyAlphaChance + essenceLevel * ModConfig.essenceBoost);
 
         if (player.level().random.nextDouble() <= chance) {
             pokemon.setAlpha(true);
@@ -92,3 +91,4 @@ public final class AlphaCandyItem extends Item {
         return Math.max(0, Math.min(3, tag.getInt(ESSENCE_LEVEL)));
     }
 }
+

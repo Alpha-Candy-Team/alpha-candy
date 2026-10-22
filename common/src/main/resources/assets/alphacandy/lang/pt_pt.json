@@ -1,6 +1,14 @@
 {
-    "item.alphacandy.alpha_candy":  "Doce Alpha",
-    "item.alphacandy.alpha_essence":  "EssÃªncia Alpha",
-    "item.alphacandy.purifying_candy":  "Doce Purificador",
-  "itemGroup.alphacandy.alpha_candy": "Doce Alpha"
+  "item.alphacandy.alpha_candy": "Doce Alfa",
+  "item.alphacandy.alpha_essence": "Essência Alfa",
+  "item.alphacandy.purifying_candy": "Doce Purificador",
+  "itemGroup.alphacandy.alpha_candy": "Doces Alfa",
+  "item.alphacandy.iota_candy": "Doce Iota",
+  "item.alphacandy.iota_essence": "Essência Iota",
+  "item.alphacandy.iota_purifying_candy": "Doce Purificador Iota",
+  "item.alphacandy.iota_advanced_candy": "Doce Iota Avançado",
+  "item.alphacandy.alpha_advanced_candy": "Doce Alfa Avançado",
+  "alphacandy.mark.advanced_alpha": "Alfa Avançado",
+  "alphacandy.mark.advanced_alpha.title": "%1$s, o Alfa Avançado",
+  "alphacandy.mark.advanced_alpha.desc": "Um Pokémon transformado com um Doce Alfa Avançado"
 }

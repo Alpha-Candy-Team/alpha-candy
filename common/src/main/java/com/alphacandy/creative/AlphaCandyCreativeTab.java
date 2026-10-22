@@ -11,21 +11,43 @@ import net.minecraft.world.item.ItemStack;
 public final class AlphaCandyCreativeTab {
 
     public static final DeferredRegister<CreativeModeTab> TABS =
-            DeferredRegister.create(AlphaCandyMod.MOD_ID, Registries.CREATIVE_MODE_TAB);
+            DeferredRegister.create(
+                    AlphaCandyMod.MOD_ID,
+                    Registries.CREATIVE_MODE_TAB
+            );
 
     public static final RegistrySupplier<CreativeModeTab> ALPHA_CANDY_TAB =
-            TABS.register("alpha_candy", () -> CreativeModeTab.builder(
-                    CreativeModeTab.Row.TOP,
-                    0
-            )
-                    .title(Component.translatable("itemGroup.alphacandy.alpha_candy"))
-                    .icon(() -> new ItemStack(AlphaCandyMod.ALPHA_CANDY.get()))
-                    .displayItems((parameters, output) -> {
-                        output.accept(AlphaCandyMod.ALPHA_CANDY.get());
-                        output.accept(AlphaCandyMod.alpha_essence.get());
-                        output.accept(AlphaCandyMod.PURIFYING_CANDY.get());
-                    })
-                    .build());
+            TABS.register(
+                    "alpha_candy",
+                    () -> CreativeModeTab.builder(
+                            CreativeModeTab.Row.TOP,
+                            0
+                    )
+                            .title(Component.translatable(
+                                    "itemGroup.alphacandy.alpha_candy"
+                            ))
+                            .icon(() -> new ItemStack(
+                                    AlphaCandyMod.ALPHA_CANDY.get()
+                            ))
+                            .displayItems((parameters, output) -> {
+                                output.accept(AlphaCandyMod.ALPHA_CANDY.get());
+                                output.accept(AlphaCandyMod.ALPHA_ADVANCED_CANDY.get());
+                                output.accept(AlphaCandyMod.alpha_essence.get());
+                                output.accept(AlphaCandyMod.PURIFYING_CANDY.get());
+
+                                if (AlphaCandyMod.IOTA_ESSENCE != null
+                                        && AlphaCandyMod.IOTA_CANDY != null
+                                        && AlphaCandyMod.IOTA_PURIFYING_CANDY != null
+                                        && AlphaCandyMod.IOTA_ADVANCED_CANDY != null) {
+
+                                    output.accept(AlphaCandyMod.IOTA_CANDY.get());
+                                    output.accept(AlphaCandyMod.IOTA_ADVANCED_CANDY.get());
+                                    output.accept(AlphaCandyMod.IOTA_ESSENCE.get());
+                                    output.accept(AlphaCandyMod.IOTA_PURIFYING_CANDY.get());
+                                }
+                            })
+                            .build()
+            );
 
     private AlphaCandyCreativeTab() {
     }

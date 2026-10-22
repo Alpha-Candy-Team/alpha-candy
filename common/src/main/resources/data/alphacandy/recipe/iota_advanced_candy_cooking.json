@@ -1,0 +1,32 @@
+{
+    "type":  "cobblemon:cooking_pot",
+    "category":  "medicines",
+    "key":  {
+                "S":  {
+                          "item":  "minecraft:sugar"
+                      },
+                "E":  {
+                          "item":  "cobblemon:exp_candy_s"
+                      },
+                "B":  {
+                          "item":  "cobblemon:pomeg_berry"
+                      },
+                "A":  {
+                          "item":  "minecraft:golden_apple"
+                      },
+                "I":  {
+                          "item":  "alphacandy:iota_essence"
+                      }
+            },
+    "pattern":  [
+                    "SEB",
+                    "IAI",
+                    "III"
+                ],
+    "result":  {
+                   "id":  "alphacandy:iota_advanced_candy"
+               },
+    "seasoningProcessors":  [
+
+                            ]
+}
