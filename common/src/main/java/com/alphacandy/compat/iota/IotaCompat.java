@@ -127,8 +127,10 @@ public final class IotaCompat {
             data.remove("alphacandy_iota_advanced_added_mini");
         }
 
+        float restoreScale;
+
         if (data.contains(ORIGINAL_SCALE)) {
-            float restoreScale = data.getFloat(ORIGINAL_SCALE);
+            restoreScale = data.getFloat(ORIGINAL_SCALE);
 
             // Si Alfa avanzado sigue activo, restaurar su escala, no la
             // escala intermedia que Iota pudo haber guardado.
@@ -139,9 +141,13 @@ public final class IotaCompat {
                 restoreScale = alphaOriginal * 1.5f;
             }
 
-            pokemon.setScaleModifier(restoreScale);
             data.remove(ORIGINAL_SCALE);
+        } else {
+            // Iota natural sin escala original registrada.
+            restoreScale = 0.95f + (float) Math.random() * 0.1f;
         }
+
+        pokemon.setScaleModifier(restoreScale);
 
         AttributeInstance speed =
                 entity.getAttribute(Attributes.MOVEMENT_SPEED);
