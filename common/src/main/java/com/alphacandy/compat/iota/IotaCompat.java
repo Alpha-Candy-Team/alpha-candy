@@ -3,6 +3,9 @@ package com.alphacandy.compat.iota;
 import com.cobblemon.mod.common.api.mark.Mark;
 import com.cobblemon.mod.common.api.mark.Marks;
 import com.cobblemon.mod.common.api.pokemon.feature.StringSpeciesFeature;
+import com.cobblemon.mod.common.api.pokemon.feature.ChoiceSpeciesFeatureProvider;
+import com.cobblemon.mod.common.api.pokemon.feature.SpeciesFeatures;
+import com.cobblemon.mod.common.api.pokemon.feature.GlobalSpeciesFeatures;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import net.minecraft.nbt.CompoundTag;
@@ -29,6 +32,83 @@ public final class IotaCompat {
     private IotaCompat() {
     }
 
+    public static boolean isIotaDataAvailable(Pokemon pokemon) {
+        ensureGlobalIotaFeature();
+
+        return SpeciesFeatures.getFeature(IOTA_FEATURE) != null
+                && Marks.getByIdentifier(IOTA_MARK_ID) != null;
+    }
+
+    private static boolean ensureGlobalIotaFeature() {
+        if (GlobalSpeciesFeatures.getCodeFeature(IOTA_FEATURE) != null) {
+            return true;
+        }
+
+        var provider = SpeciesFeatures.getFeature(IOTA_FEATURE);
+
+        if (!(provider instanceof ChoiceSpeciesFeatureProvider)) {
+            return false;
+        }
+
+        var resourceProvider =
+                SpeciesFeatures.getResourceFeature(IOTA_FEATURE);
+
+        if (resourceProvider != null) {
+            SpeciesFeatures.unregister(IOTA_FEATURE);
+        }
+
+        try {
+            Class<?> globalFeatures = Class.forName(
+                    "com.cobblemon.mod.common.api.pokemon.feature.GlobalSpeciesFeatures"
+            );
+
+            java.lang.reflect.Method register = java.util.Arrays.stream(
+                    globalFeatures.getMethods()
+            )
+                    .filter(method -> method.getName().equals("register"))
+                    .filter(method -> method.getParameterCount() == 2)
+                    .filter(method -> method.getParameterTypes()[0] == String.class)
+                    .filter(method -> method.getParameterTypes()[1].isInstance(provider))
+                    .findFirst()
+                    .orElseThrow();
+
+            register.invoke(null, IOTA_FEATURE, provider);
+            return true;
+
+        } catch (ReflectiveOperationException exception) {
+            throw new IllegalStateException(
+                    "No se pudo registrar globalmente la característica Iota",
+                    exception
+            );
+        }
+    }
+    private static StringSpeciesFeature getOrCreateIotaFeature(Pokemon pokemon) {
+        StringSpeciesFeature feature = pokemon.getFeature(IOTA_FEATURE);
+
+        if (feature != null) {
+            return feature;
+        }
+
+        if (!(SpeciesFeatures.getFeature(IOTA_FEATURE)
+                instanceof ChoiceSpeciesFeatureProvider provider)) {
+            return null;
+        }
+
+        feature = provider.fromString("false");
+
+        if (feature == null) {
+            return null;
+        }
+
+        java.util.List<com.cobblemon.mod.common.api.pokemon.feature.SpeciesFeature> features =
+                new java.util.ArrayList<>(pokemon.getFeatures());
+
+        features.add(feature);
+        pokemon.setFeatures(features);
+
+        return feature;
+    }
+
     public static boolean isIota(Pokemon pokemon) {
         StringSpeciesFeature feature = pokemon.getFeature(IOTA_FEATURE);
         return feature != null
@@ -38,7 +118,7 @@ public final class IotaCompat {
     public static void makeIota(PokemonEntity entity) {
         Pokemon pokemon = entity.getPokemon();
 
-        StringSpeciesFeature feature = pokemon.getFeature(IOTA_FEATURE);
+        StringSpeciesFeature feature = getOrCreateIotaFeature(pokemon);
         Mark iotaMark = Marks.getByIdentifier(IOTA_MARK_ID);
 
         if (feature == null || iotaMark == null || isIota(pokemon)) {

@@ -45,6 +45,10 @@ public final class IotaAdvancedCandyItem extends Item {
 
         Pokemon pokemon = entity.getPokemon();
 
+        if (!IotaCompat.isIotaDataAvailable(pokemon)) {
+            return InteractionResult.FAIL;
+        }
+
         if (pokemon.getOwnerUUID() == null
                 || !pokemon.getOwnerUUID().equals(player.getUUID())) {
             return InteractionResult.FAIL;

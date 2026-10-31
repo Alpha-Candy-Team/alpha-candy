@@ -36,6 +36,3 @@ type="required"
 versionRange="[1.8.1,)"
 ordering="AFTER"
 side="BOTH"
-
-[[mixins]]
-config="alphacandy.mixins.json"
