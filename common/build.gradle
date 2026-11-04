@@ -9,4 +9,7 @@ dependencies {
     // The Fabric artifact is used only as the common compile classpath because it
     // exposes Cobblemon's shared API. Each loader module also declares its own jar.
     modImplementation "curse.maven:cobblemon-${cobblemon_curse_id}:${cobblemon_fabric_file}"
+
+    // Cobblemon exposes Kotlin-backed stats types in its Java API.
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:1.3.72"
 }

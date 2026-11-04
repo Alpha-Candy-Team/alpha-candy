@@ -8,14 +8,20 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
+/**
+ * EN: Registers and configures the creative mode tab for the Alpha Candy mod.
+ * ES: Registra y configura la pestaña del modo creativo para el mod Alpha Candy.
+ */
 public final class AlphaCandyCreativeTab {
 
+    // EN: Deferred registration binds the tab to the mod namespace and creative-tab registry. / ES: El registro diferido vincula la pestaña al espacio del mod y al registro creativo.
     public static final DeferredRegister<CreativeModeTab> TABS =
             DeferredRegister.create(
                     AlphaCandyMod.MOD_ID,
                     Registries.CREATIVE_MODE_TAB
             );
 
+    // EN: Defines the translated tab title, icon, and displayed item list. / ES: Define el título traducido, el icono y la lista de objetos mostrados.
     public static final RegistrySupplier<CreativeModeTab> ALPHA_CANDY_TAB =
             TABS.register(
                     "alpha_candy",
@@ -49,9 +55,11 @@ public final class AlphaCandyCreativeTab {
                             .build()
             );
 
+    /** EN: Prevents instances of this static registration holder. / ES: Evita instancias de esta clase auxiliar de registro. */
     private AlphaCandyCreativeTab() {
     }
 
+    /** EN: Registers the deferred tab with Minecraft. / ES: Registra la pestaña diferida en Minecraft. */
     public static void register() {
         TABS.register();
     }

@@ -5,6 +5,7 @@ import com.alphacandy.compat.iota.IotaCompat;
 import com.cobblemon.mod.common.api.mark.Mark;
 import com.cobblemon.mod.common.api.mark.Marks;
 import com.cobblemon.mod.common.api.pokemon.experience.CandyExperienceSource;
+import com.cobblemon.mod.common.api.pokemon.stats.Stats;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import net.minecraft.nbt.CompoundTag;
@@ -22,27 +23,43 @@ import net.minecraft.world.item.ItemStack;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * EN: Guaranteed, deterministic advanced Alpha candy that transforms a Pokémon into an Alpha variant,
+ * maximizes friendship, grants a level, and equips the Advanced Alpha mark.
+ * ES: Caramelo Alfa avanzado garantizado y determinista que convierte al Pokémon en Alfa,
+ * maximiza su amistad, sube un nivel y equipa la marca Alfa Avanzado.
+ */
 public final class AlphaAdvancedCandyItem extends Item {
 
+    // EN: Persistent flags allow the purifier and Iota integration to undo this candy's changes. / ES: Estas claves permiten al purificador y a Iota deshacer los cambios del caramelo.
     public static final String ACTIVE =
             "alphacandy_advanced_alpha_active";
     public static final String ORIGINAL_SCALE =
             "alphacandy_advanced_alpha_original_scale";
 
-    private static final ResourceLocation ADVANCED_ALPHA_MARK_ID =
+    /** EN: Identifier for the custom Advanced Alpha mark. / ES: Identificador de la marca personalizada de Alfa Avanzado. */
+    public static final ResourceLocation ADVANCED_ALPHA_MARK_ID =
             ResourceLocation.parse("alphacandy:mark_advanced_alpha");
 
+    /** EN: Creates the advanced Alpha candy item. / ES: Crea el objeto de caramelo Alfa avanzado. */
     public AlphaAdvancedCandyItem(Properties properties) {
         super(properties);
     }
 
     @Override
+    /**
+     * EN: Validates server, ownership, species and Alpha state; sets Alpha status and its mark,
+     * saves scale for restoration, maximizes friendship, grants one level if possible, and consumes the item.
+     * ES: Valida servidor, propietario, especie y estado Alfa; activa Alfa y su marca,
+     * guarda la escala, maximiza amistad, sube un nivel si es posible y consume el objeto.
+     */
     public InteractionResult interactLivingEntity(
             ItemStack stack,
             Player player,
             LivingEntity target,
             InteractionHand hand
     ) {
+        // EN: Ignore client-side prediction and non-Pokémon targets. / ES: Ignora la predicción del cliente y los objetivos que no sean Pokémon.
         if (!(target instanceof PokemonEntity entity)
                 || player.level().isClientSide()) {
             return InteractionResult.PASS;
@@ -50,19 +67,18 @@ public final class AlphaAdvancedCandyItem extends Item {
 
         Pokemon pokemon = entity.getPokemon();
 
+        // EN: Prevent use by players who do not own this Pokémon. / ES: Impide el uso a jugadores que no sean propietarios del Pokémon.
         if (pokemon.getOwnerUUID() == null
                 || !pokemon.getOwnerUUID().equals(player.getUUID())) {
             return InteractionResult.FAIL;
         }
 
-        String speciesId = pokemon.getSpecies()
-                .getResourceIdentifier().toString();
-
-        if (ModConfig.speciesBlacklist.contains(speciesId)
-                || pokemon.isAlpha()) {
+        // EN: Reject blacklisted species and Pokémon already converted to Alpha. / ES: Rechaza especies bloqueadas y Pokémon que ya son Alfa.
+        if (pokemon.isAlpha() || ModConfig.isSpeciesBlacklisted(pokemon)) {
             return InteractionResult.FAIL;
         }
 
+        // EN: The custom mark must be registered before changing the Pokémon. / ES: La marca personalizada debe estar registrada antes de modificar al Pokémon.
         Mark advancedAlphaMark =
                 Marks.getByIdentifier(ADVANCED_ALPHA_MARK_ID);
 
@@ -74,7 +90,7 @@ public final class AlphaAdvancedCandyItem extends Item {
 
         pokemon.setAlpha(true);
 
-        // Preserve the scale data required by the existing purifier/Iota compatibility.
+        // EN: Preserve the natural scale; for Iotas, use the original scale captured by IotaCompat. / ES: Conserva la escala natural; en Iotas usa la escala original de IotaCompat.
         boolean iotaWasActive = IotaCompat.isIota(pokemon);
         float originalScale = iotaWasActive
                 ? IotaCompat.getOriginalScale(pokemon)
@@ -83,7 +99,7 @@ public final class AlphaAdvancedCandyItem extends Item {
         data.putFloat(ORIGINAL_SCALE, originalScale);
         data.putBoolean(ACTIVE, true);
 
-        // Only manage the custom Advanced Alpha mark.
+        // EN: Add only the custom mark, select it, and refresh derived aspects. / ES: Añade solo la marca personalizada, la selecciona y actualiza los aspectos derivados.
         Set<Mark> marks = new HashSet<>(pokemon.getMarks());
         if (marks.add(advancedAlphaMark)) {
             pokemon.setMarks(marks);
@@ -91,7 +107,15 @@ public final class AlphaAdvancedCandyItem extends Item {
         pokemon.setActiveMark(advancedAlphaMark);
         pokemon.updateAspects();
 
-        // Maximum friendship and one level, unless already at the configured cap.
+        // EN: Maximize friendship and grant one level using Cobblemon candy experience source. / ES: Maximiza la amistad y otorga un nivel mediante la fuente de experiencia de caramelos de Cobblemon.
+        // EN: Set strong IVs, guaranteeing perfect Attack stats and randomizing the others from 20 to 31.
+        // ES: Asigna IVs altos: garantiza Ataque perfecto y sortea las demás estadísticas entre 20 y 31.
+        pokemon.setIV(Stats.ATTACK, 31);
+        pokemon.setIV(Stats.SPECIAL_ATTACK, 31);
+        pokemon.setIV(Stats.HP, Math.max(pokemon.getIvs().get(Stats.HP), 20 + player.level().random.nextInt(12)));
+        pokemon.setIV(Stats.DEFENCE, Math.max(pokemon.getIvs().get(Stats.DEFENCE), 20 + player.level().random.nextInt(12)));
+        pokemon.setIV(Stats.SPECIAL_DEFENCE, Math.max(pokemon.getIvs().get(Stats.SPECIAL_DEFENCE), 20 + player.level().random.nextInt(12)));
+        pokemon.setIV(Stats.SPEED, Math.max(pokemon.getIvs().get(Stats.SPEED), 20 + player.level().random.nextInt(12)));
         pokemon.setFriendship(250, true);
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return InteractionResult.FAIL;
@@ -100,17 +124,21 @@ public final class AlphaAdvancedCandyItem extends Item {
             pokemon.levelUp(new CandyExperienceSource(serverPlayer, stack));
         }
 
+        // EN: Play dramatic dragon growl audio feedback upon conversion.
+        // ES: Reproduce efecto de sonido dramático tras la conversión.
         player.level().playSound(
                 null,
                 target.getX(),
                 target.getY(),
                 target.getZ(),
-                SoundEvents.ENDER_DRAGON_GROWL,
+                SoundEvents.PLAYER_LEVELUP,
                 SoundSource.NEUTRAL,
                 0.8f,
                 0.8f
         );
 
+        // EN: Consume one candy outside Creative mode.
+        // ES: Consume un caramelo fuera del modo Creativo.
         if (!player.getAbilities().instabuild) {
             stack.shrink(1);
         }

@@ -1,7 +1,7 @@
 ﻿{
   "name": "alphacandy.mark.advanced_alpha",
   "title": "alphacandy.mark.advanced_alpha.title",
-  "titleColor": "FFD700",
+  "titleColor": "AA55FF",
   "description": "alphacandy.mark.advanced_alpha.desc",
   "texture": "alphacandy:textures/gui/mark/mark_advanced_alpha.png",
   "chance": 0.0,
