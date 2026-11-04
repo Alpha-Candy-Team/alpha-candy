@@ -80,4 +80,4 @@ Alpha Candy is distributed under the **Alpha Candy Non-Commercial License**. See
 
 ## Version
 
-**Alpha Candy 1.2.0**
+**Alpha Candy 1.2.1**

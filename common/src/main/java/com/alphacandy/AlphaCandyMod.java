@@ -11,6 +11,7 @@ import com.alphacandy.cooking.AlphaAdvancedEssenceSeasoningProcessor;
 import com.alphacandy.cooking.AlphaEssenceSeasoningProcessor;
 import com.alphacandy.creative.AlphaCandyCreativeTab;
 import com.alphacandy.item.AlphaAdvancedCandyItem;
+import com.alphacandy.item.AdvancedAlphaMarkPersistence;
 import com.alphacandy.item.AlphaCandyItem;
 import com.alphacandy.item.AlphaEssenceItem;
 import com.alphacandy.item.PurifyingCandyItem;
@@ -74,6 +75,7 @@ public final class AlphaCandyMod {
         // EN: Make persisted values available before item interactions can occur.
         // ES: Deja disponibles los valores guardados antes de que puedan usarse los objetos.
         ModConfig.load();
+        AdvancedAlphaMarkPersistence.register();
 
         IOTA_ESSENCE = ITEMS.register(
                 "iota_essence",
