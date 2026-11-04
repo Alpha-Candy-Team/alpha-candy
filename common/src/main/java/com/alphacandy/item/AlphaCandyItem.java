@@ -75,7 +75,7 @@ public final class AlphaCandyItem extends Item {
                     target.getX(),
                     target.getY(),
                     target.getZ(),
-                    SoundEvents.ENDER_DRAGON_GROWL,
+                    SoundEvents.PLAYER_LEVELUP,
                     SoundSource.NEUTRAL,
                     0.8f,
                     0.8f

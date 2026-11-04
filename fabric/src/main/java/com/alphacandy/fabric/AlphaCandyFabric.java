@@ -9,7 +9,7 @@ import net.fabricmc.api.ModInitializer;
  */
 public final class AlphaCandyFabric implements ModInitializer {
     @Override
-    /** EN: Entrypoint called by Fabric; delegates setup to common code. / ES: Punto de entrada de Fabric; delega la preparación al código común. */
+    /** EN: Entrypoint called by Fabric; delegates setup to common mod logic. / ES: Punto de entrada del cargador Fabric que delega la preparación al código común. */
     public void onInitialize() {
         AlphaCandyMod.init();
     }

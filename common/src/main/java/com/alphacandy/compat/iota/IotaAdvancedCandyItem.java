@@ -3,6 +3,7 @@ package com.alphacandy.compat.iota;
 import com.alphacandy.config.ModConfig;
 import com.cobblemon.mod.common.api.mark.Mark;
 import com.cobblemon.mod.common.api.mark.Marks;
+import com.cobblemon.mod.common.api.pokemon.stats.Stats;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import net.minecraft.nbt.CompoundTag;
@@ -124,6 +125,14 @@ public final class IotaAdvancedCandyItem extends Item {
             return InteractionResult.FAIL;
         }
 
+        // EN: Emphasize Iota speed and durability while improving other IVs without lowering existing values.
+        // ES: Refuerza velocidad y defensas Iota y mejora los demás IVs sin reducir los valores actuales.
+        pokemon.setIV(Stats.SPEED, 31);
+        pokemon.setIV(Stats.DEFENCE, Math.max(pokemon.getIvs().get(Stats.DEFENCE), 20 + player.level().random.nextInt(12)));
+        pokemon.setIV(Stats.SPECIAL_DEFENCE, Math.max(pokemon.getIvs().get(Stats.SPECIAL_DEFENCE), 20 + player.level().random.nextInt(12)));
+        pokemon.setIV(Stats.HP, Math.max(pokemon.getIvs().get(Stats.HP), 10 + player.level().random.nextInt(11)));
+        pokemon.setIV(Stats.ATTACK, Math.max(pokemon.getIvs().get(Stats.ATTACK), 10 + player.level().random.nextInt(11)));
+        pokemon.setIV(Stats.SPECIAL_ATTACK, Math.max(pokemon.getIvs().get(Stats.SPECIAL_ATTACK), 10 + player.level().random.nextInt(11)));
         // EN: Play dramatic sound effect upon successful transformation.
         // ES: Reproduce un efecto de sonido tras completar la transformación con éxito.
         player.level().playSound(
@@ -131,7 +140,7 @@ public final class IotaAdvancedCandyItem extends Item {
                 target.getX(),
                 target.getY(),
                 target.getZ(),
-                SoundEvents.ENDER_DRAGON_GROWL,
+                SoundEvents.PLAYER_LEVELUP,
                 SoundSource.NEUTRAL,
                 0.8f,
                 1.0f

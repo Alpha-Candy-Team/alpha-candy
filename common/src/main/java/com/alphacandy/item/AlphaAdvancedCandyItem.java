@@ -5,6 +5,7 @@ import com.alphacandy.compat.iota.IotaCompat;
 import com.cobblemon.mod.common.api.mark.Mark;
 import com.cobblemon.mod.common.api.mark.Marks;
 import com.cobblemon.mod.common.api.pokemon.experience.CandyExperienceSource;
+import com.cobblemon.mod.common.api.pokemon.stats.Stats;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import net.minecraft.nbt.CompoundTag;
@@ -107,6 +108,14 @@ public final class AlphaAdvancedCandyItem extends Item {
         pokemon.updateAspects();
 
         // EN: Maximize friendship and grant one level using Cobblemon candy experience source. / ES: Maximiza la amistad y otorga un nivel mediante la fuente de experiencia de caramelos de Cobblemon.
+        // EN: Set strong IVs, guaranteeing perfect Attack stats and randomizing the others from 20 to 31.
+        // ES: Asigna IVs altos: garantiza Ataque perfecto y sortea las demás estadísticas entre 20 y 31.
+        pokemon.setIV(Stats.ATTACK, 31);
+        pokemon.setIV(Stats.SPECIAL_ATTACK, 31);
+        pokemon.setIV(Stats.HP, Math.max(pokemon.getIvs().get(Stats.HP), 20 + player.level().random.nextInt(12)));
+        pokemon.setIV(Stats.DEFENCE, Math.max(pokemon.getIvs().get(Stats.DEFENCE), 20 + player.level().random.nextInt(12)));
+        pokemon.setIV(Stats.SPECIAL_DEFENCE, Math.max(pokemon.getIvs().get(Stats.SPECIAL_DEFENCE), 20 + player.level().random.nextInt(12)));
+        pokemon.setIV(Stats.SPEED, Math.max(pokemon.getIvs().get(Stats.SPEED), 20 + player.level().random.nextInt(12)));
         pokemon.setFriendship(250, true);
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return InteractionResult.FAIL;
@@ -122,7 +131,7 @@ public final class AlphaAdvancedCandyItem extends Item {
                 target.getX(),
                 target.getY(),
                 target.getZ(),
-                SoundEvents.ENDER_DRAGON_GROWL,
+                SoundEvents.PLAYER_LEVELUP,
                 SoundSource.NEUTRAL,
                 0.8f,
                 0.8f

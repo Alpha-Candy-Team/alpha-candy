@@ -14,7 +14,6 @@ import com.alphacandy.item.AlphaAdvancedCandyItem;
 import com.alphacandy.item.AlphaCandyItem;
 import com.alphacandy.item.AlphaEssenceItem;
 import com.alphacandy.item.PurifyingCandyItem;
-import com.alphacandy.particle.AlphaCandyEyeParticles;
 import com.cobblemon.mod.common.item.crafting.SeasoningProcessor;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -117,10 +116,6 @@ public final class AlphaCandyMod {
                 IotaEssenceSeasoningProcessor.INSTANCE.getType(),
                 IotaEssenceSeasoningProcessor.INSTANCE
         );
-
-        // EN: Register custom eye particle effects with Cobblemon's aspect system.
-        // ES: Registra los efectos personalizados de partículas en los ojos con el sistema de aspectos de Cobblemon.
-        AlphaCandyEyeParticles.register();
 
         // EN: Register all deferred items and creative tab entries with the game.
         // ES: Registra todos los objetos diferidos y entradas de la pestaña creativa en el juego.

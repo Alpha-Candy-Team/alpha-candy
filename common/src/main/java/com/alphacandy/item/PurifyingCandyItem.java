@@ -135,7 +135,7 @@ public final class PurifyingCandyItem extends Item {
                 target.getX(),
                 target.getY(),
                 target.getZ(),
-                SoundEvents.PLAYER_LEVELUP,
+                SoundEvents.FIRE_EXTINGUISH,
                 SoundSource.NEUTRAL,
                 0.6f,
                 1.2f
