@@ -30,3 +30,6 @@ Thumbs.db
 
 # Generated Gradle files
 !gradle/wrapper/gradle-wrapper.jar
+
+# Generated IDE/compiler output
+**/bin/
