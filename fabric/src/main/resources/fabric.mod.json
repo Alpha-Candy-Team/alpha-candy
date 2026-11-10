@@ -13,6 +13,9 @@
                         "main":  [
                                      "com.alphacandy.fabric.AlphaCandyFabric"
                                  ]
+                    ,"client": [
+                        "com.alphacandy.fabric.AlphaCandyFabricClient"
+                    ]
                     },
     "depends":  {
                     "fabricloader":  "\u003e=${fabric_loader_version}",

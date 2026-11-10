@@ -30,11 +30,11 @@
         "rotation": false
       },
       "minecraft:emitter_rate_steady": {
-        "spawn_rate": 10,
-        "max_particles": 32
+        "spawn_rate": 12,
+        "max_particles": 100
       },
       "minecraft:emitter_lifetime_once": {
-        "active_time": 0.8
+        "active_time": 1.25
       },
       "minecraft:emitter_lifetime_events": {
         "creation_event": "event_outer"
